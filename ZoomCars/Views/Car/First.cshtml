@@ -1,0 +1,79 @@
+﻿@{ ViewData["Title"] = "First";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<style>
+    body {
+        background-image: url("https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+
+
+    .row {
+        padding-top: 10%;
+        color: white;
+        background-color: rgb(255, 255, 255, 0.5);
+        width: 550px;
+        border: 0px solid rgb(80, 0, 0);
+        padding: 50px;
+        margin: 20px;
+    }
+</style>
+<body>
+
+
+    <div class="row">
+        @using (Html.BeginForm("CheckAvail", "Car", FormMethod.Post, new { id = "popupForm" }))
+        {
+
+<form class="form" asp-action="price" method="post">
+
+
+    <table>
+        <tr>
+
+            <label for="location"><b>LOCATION:</b></label>
+        </tr>
+
+
+        <tr>
+
+
+            @Html.DropDownList("City", new SelectList(ViewBag.data, "LocationId", "City"))
+
+
+        </tr>
+        <tr>
+
+            <div class="form-group">
+                <label class="form-label"><b>FROM DATE AND TIME:</b></label>
+                <input type="datetime-local" id="FrmDate" name="FrmDate" class="form-control" placeholder="From Date" required>
+            </div>
+
+        </tr>
+
+
+
+        <tr>
+            <div class="form-group">
+                <label class="form-label"><b>TO DATE AND TIME:</b></label>
+                <input type="datetime-local" id="ToDate" name="ToDate" class="form-control" placeholder="To Date" required>
+
+            </div>
+        </tr>
+        <tr>
+            <div class="form-group">
+
+               
+
+                <input type="submit" class="btn btn-primary" onclick="location.href = '@Url.Action( "CheckAvail","Car")'" value="Find Cars" />
+
+            </div>
+        </tr>
+    </table>
+
+</form>}
+
+    </div>
+</body>

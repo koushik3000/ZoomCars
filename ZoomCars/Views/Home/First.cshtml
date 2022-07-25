@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewData["Title"] = "First";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>WELCOME TO VROOM CARS</h1>
+
+<div class="row">
+    @using (Html.BeginForm("price", "Car", FormMethod.Post, new { id = "popupForm" }))
+    {
+
+    <form class="form" asp-action="price" method="post">
+
+
+        <table>
+            <tr>
+
+                <label for="location">LOCATION:</label>
+            </tr>
+           
+
+            <tr>
+
+
+                @Html.DropDownList("City", new SelectList(ViewBag.data,"LocationId", "City"))
+
+
+            </tr>
+            <tr>
+
+                <div class="form-group">
+                    <label class="form-label">FROM DATE AND TIME:</label>
+                    <input type="datetime-local" id="FrmDate" name="FrmDate" class="form-control" placeholder="From Date" required>
+                </div>
+
+            </tr>
+    
+
+             
+            <tr>
+                <div class="form-group">
+                    <label class="form-label">TO DATE AND TIME:</label>
+                    <input type="datetime-local" id="ToDate" name="ToDate" class="form-control" placeholder="To Date"   required>
+
+                </div>
+            </tr>
+            <tr>
+                <div class="form-group">
+
+                     <!--<input type="button" onclick="location.href = '@Url.Action( "Price","Car")'"--> @*asp-route-Vin="@item.FrmDate"*@ <!--value="Search" />-->
+
+                 <input type="submit" class="btn btn-primary"  onclick="location.href = '@Url.Action( "price","Car")'"  value="Search" /> 
+
+                </div>
+            </tr>
+        </table>
+    </form>
+            }
+
+    </div>
+  

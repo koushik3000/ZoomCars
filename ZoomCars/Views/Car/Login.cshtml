@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ 
+<style>
+    .content {
+        background-color: rgb(255, 255, 255, 0.5);
+        width: 550px;
+        border: 0px solid rgb(80, 0, 0);
+        padding: 50px;
+        margin: 20px;
+    }
+
+    body {
+        background-image: url("https://newevolutiondesigns.com/images/freebies/4k-car-wallpaper-1.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100%;
+    }
+
+    span {
+        background-color: black;
+    }
+</style>
+<body>
+    <center>
+        <h1>LOGIN</h1>
+
+        <form asp-action="Login2" method="get">
+            <div class="content">
+                <table>
+                    <tr>
+                        <td>
+                            <b>USER NAME:</b>
+                        </td>
+                        <td>
+                            <input type="text" name="UName" value="@ViewData["Login2"]" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>PASSWORD :</b>
+                        </td>
+                        <td>
+                            <input type="password" name="PWord" value="@ViewData["Login2"]" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>
+                                <input type="submit" class="btn btn-primary" onsubmit="location.href = '@Url.Action( "Login","Home")'" value="Log In" />
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                            create new account: <a href="http://localhost:35863/Car/Signup">Sign Up </a>
+
+                        </td>
+                    </tr>
+                    <tr>
+                    <td>
+
+                        <label>@ViewBag.Notification</label>
+
+                    </td>
+
+                    </tr>
+                </table>
+            </div>
+
+        </form>
+    </center>
+</body>
+

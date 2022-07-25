@@ -1,0 +1,90 @@
+﻿@model ZoomCars.Models.Car
+
+@{
+    ViewData["Title"] = "Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        background-image: url("https://img.freepik.com/premium-photo/black-generic-sport-unbranded-car-isolated-dark-background-3d-illustration_110488-1969.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        color:white;
+    }
+</style>
+
+
+<h1>Booking Summary</h1>
+
+
+<div>
+
+    <hr />
+    <table>
+        <tr>
+            <td>
+                <b>  From Date:</b>
+            </td>
+            <td>
+                @TempData["FromDate"]
+                @{
+                    TempData.Keep("FromDate");
+                }
+            </td>
+        <tr />
+        <tr>
+            <td>
+                <b>To Date:</b>
+            </td>
+            <td>
+                @TempData["ToDate"]
+                @{
+                    TempData.Keep("ToDate");
+                }
+
+            </td>
+        </tr>
+    </table>
+
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Brand)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Brand)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CarSeats)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CarSeats)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CarPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @TempData["Amount"]
+            @{
+                TempData.Keep("Amount");
+            }
+        </dd>
+
+
+
+
+    </dl>
+
+    <form asp-action="Booking">
+
+        @*<input type="button" onclick="location.href = '@Url.Action( "Booked","Car")'" value="BOOK"*@
+        <a asp-action="Booked">Confirm Booking</a>
+    </form>
+</div>

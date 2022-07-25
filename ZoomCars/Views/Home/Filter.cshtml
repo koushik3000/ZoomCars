@@ -1,0 +1,99 @@
+﻿@model IEnumerable<ZoomCars.Models.Car>
+
+@{
+    ViewData["Title"] = "Filter";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Filter</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <form asp-action="Filter" method="get">
+                <div class="form-actions no-color">
+                    <p>
+                        SEATS: <input type="text" name="seats" value="@ViewData["Filter"]" />
+
+
+                    </p>
+
+                    <p>
+                        CAR TYPE: <input type="text" name="type" value="@ViewData["Filter"]" />
+                        <input type="submit" value="Search" class="btn btn-default" />
+                        <a asp-action="Index">Back to Full List</a>
+                    </p>
+                </div>
+
+            </form>
+
+
+            @*
+                <label asp-for="DepId" class="control-label">City</label>
+                <select asp-for="CarSeats" class="form-control" asp-items="@(new SelectList(ViewBag.list,"Vin","CarSeats"))"></select>
+                <select asp-for="CarType" class="form-control" asp-items="@(new SelectList(ViewBag.asdf,"EmpId","EmpName"))"></select>*@
+        </tr>
+        <tr>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.CarSeats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarType)
+            </th>
+          @*  <th>
+                @Html.DisplayNameFor(model => model.CarAvailable)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.CarPrice)
+            </th>
+
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarSeats)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarAvailable)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarPrice)
+                </td>
+
+
+
+                <td><a asp-action="booknow">book now</a></td>
+
+            </tr>
+
+        }
+    </tbody>
+</table>

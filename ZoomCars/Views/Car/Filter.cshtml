@@ -1,0 +1,141 @@
+﻿@model IEnumerable<ZoomCars.Models.Car>
+
+@{
+    ViewData["Title"] = "Filter";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        background-image: url("https://wallpaperaccess.com/full/1846083.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        color: white;
+    }
+
+    .h1 {
+        text-align: center;
+        color: white;
+    }
+
+    thead {
+        color: white;
+    }
+
+    tbody {
+        color: white;
+    }
+</style>
+
+<h1>SELECT YOUR CAR</h1>
+<table>
+    <tr>
+        <td> <p> FROM DATE: </p></td>
+        <td>
+            @TempData["FromDate"]
+            @{
+                TempData.Keep("FromDate");
+            }
+        </td>
+    </tr>
+    <tr>
+        <td>
+
+            TO DATE:
+        </td>
+        <td>
+            @TempData["ToDate"]
+            @{
+                TempData.Keep("ToDate");
+            }
+        </td>
+
+
+    </tr>
+</table>
+
+<p>
+    <form asp-action="Filter" method="get">
+        <div class="form-actions no-color">
+            <p>
+                SEATS: <input type="text" name="seat" value="@ViewData["Filter"]" />
+
+
+            </p>
+
+            <p>
+                CAR TYPE: <input type="text" name="search" value="@ViewData["Filter"]" />
+                <input type="submit" value="Search" class="btn btn-default text-white" />
+            </p>
+        </div> 
+        <div></div>
+    </form>
+    
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarSeats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarPrice)
+            </th>
+
+
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarSeats)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarPrice)
+
+                </td>
+
+
+
+                <td>
+
+
+                    @*<input type="button" onclick="location.href = '@Url.Action( "Booking","Car", "Vin")'" value="BOOK" />*@
+                    @*<td><a asp-action="Booking">book now</a></td>*@
+
+                    @* <a asp-action="Booking" asp-route-Vin="@item.Vin">Book</a>*@
+
+                    <a asp-action="CheckLogin" asp-route-Vin="@item.Vin">Book Now</a>
+
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+
